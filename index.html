@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>ToDo</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="container">
+        <h1>ToDo's</h1>
+        <img
+          class="icon-title"
+          src="https://media.tenor.com/-aW73OVUtyYAAAAi/tkthao219-bubududu.gif"
+        />
+      </header>
+      <section id="add-task">
+        <div id="edit">
+          <h1>Add a task</h1>
+          <label>Task:</label>
+          <input type="text" id="added-task" />
+          <label>Alarm:</label>
+          <input type="time" id="alarm-task" />
+          <div class="btn">
+            <button id="done-btn">Done</button>
+            <button id="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </section>
+      <audio
+        id="alarm-sound"
+        src="Danger Alarm Sound Effect.mp3"
+        preload="auto"
+        hidden
+      ></audio>
+      <div class="wrap">
+        <section class="head">
+          <!-- <input type="text" id="newTask" placeholder="Add new task:" /> -->
+          <button id="add">Add a new task</button>
+        </section>
+
+        <section class="hero">
+          <h3>ToDo list:</h3>
+          <ul id="todo-list">
+            <div id="no-task-message">
+              <p>No task right now :)</p>
+            </div>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
