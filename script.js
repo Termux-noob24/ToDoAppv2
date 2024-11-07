@@ -119,15 +119,26 @@ const scheduleAlarm = (taskText, alarmTime) => {
         new Notification('ToDo Reminder', {
           body: `It's time to: ${taskText}`,
         });
-        alarmSound.play();
+        // Ensure audio playback is allowed on mobile
+        if (typeof alarmSound.play === 'function') {
+          alarmSound.play().catch((error) => {
+            console.error('Audio playback failed:', error);
+          });
+        }
       }
     }, timeToAlarm);
   }
-};
 
-if ('Notification' in window && Notification.permission !== 'granted') {
-  Notification.requestPermission();
-}
+  if ('Notification' in window && Notification.permission !== 'granted') {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+      } else {
+        console.log('Notification permission denied.');
+      }
+    });
+  }
+};
 
 done.addEventListener('click', addTask);
 loadTasks();
@@ -138,10 +149,13 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register('/service-worker.js')
       .then((registration) => {
-        console.log('ServiceWorker registered with scope:', registration.scope);
+        console.log(
+          'ServiceWorker registration successful with scope: ',
+          registration.scope
+        );
       })
       .catch((error) => {
-        console.log('ServiceWorker registration failed:', error);
+        console.error('ServiceWorker registration failed: ', error);
       });
   });
 }
